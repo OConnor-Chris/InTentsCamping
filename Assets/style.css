@@ -8,9 +8,14 @@
     margin: var(--marginBottom);
 }
 
+.title-bar img {
+    float: left;
+    margin: 30px 0 0 5px;
+
+}
+
 .title-bar p {
     color:brown;
-
 }
 
 .nav-wrapper {
@@ -27,4 +32,5 @@
 
 .page-footer {
     border: 3px solid black;
+    text-align: center;
 }
