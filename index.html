@@ -5,8 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" href="Assets/style.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" type="text/css" href="Assets/style.css" />
+    <script src="Assets/script.js"></script>
     <title>Document</title>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB35edU2bJy9KUuFdilRjifzM5sCJbSBSY&callback=initMap&libraries=&v=weekly"
+        async
+        ></script>
+
 </head>
 <body>
   <!-- Header with Title and Logo -->
@@ -30,6 +37,10 @@
       <!-- Display area -->
       <div class="display-area">
 
+        <div id="map"></div>
+
+        
+
       </div>
 
       <!-- Footer -->
@@ -43,6 +54,6 @@
       </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="Assets/script.jss"></script>
+    <script src="Assets/script.js"></script>
 </body>
 </html>
