@@ -21,6 +21,7 @@
 .nav-wrapper {
     border: 3px solid red;
     margin: var(--marginBottom);
+    background-color: darkgreen;
 }
 
 .display-area {
@@ -33,4 +34,5 @@
 .page-footer {
     border: 3px solid black;
     text-align: center;
+    background-color: brown;
 }
