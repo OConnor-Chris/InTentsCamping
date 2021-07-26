@@ -1,0 +1,30 @@
+:root {
+    --padding: 5px;
+}
+
+.title-bar {
+    border: 3px solid blue;
+    text-align: center;
+    padding: var(--padding);
+}
+
+.title-bar p {
+    color:brown;
+
+}
+
+.nav-wrapper {
+    border: 3px solid red;
+    padding: var(--padding);
+}
+
+.display-area {
+    border: 3px solid yellow;
+    width: 100%;
+    min-height: 300px;
+    padding: var(--padding);
+}
+
+.page-footer {
+    border: 3px solid black;
+}
