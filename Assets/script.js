@@ -1,5 +1,7 @@
+var searchBarEL = $('<li>').appendTo('#search')
 //When a user searches for an area
     //Search Bar
+    
     //Hit search button
     //Calling for the API
         //Calls RIBD recreation API
