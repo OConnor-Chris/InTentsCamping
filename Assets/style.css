@@ -6,6 +6,8 @@
     border: 3px solid blue;
     text-align: center;
     margin: var(--marginBottom);
+    background-image: url("./Images/foerest-bg.jpg");
+    color: white;
 }
 
 .title-bar img {
