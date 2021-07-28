@@ -1,4 +1,4 @@
-var requestUrl = "https://developer.nps.gov/api/v1/activities/parks?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
+var requestUrl = "https://developer.nps.gov/api/v1/activities/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
 
 
 function getApi(requestUrl) {
@@ -7,7 +7,7 @@ function getApi(requestUrl) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
+        console.log(data.data[11])
       })
 }
 
