@@ -21,5 +21,10 @@ var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7Chi
 //Campsites will be listed with distance from your location
  
 //Storing search results to Local Storage
-localStorage.setItem("search")
-document.getElementById("search").innerHTML = localStorage.getItem("search-result");
+
+//This is jq for the dropdown menu
+$( document ).ready(function() {
+    $(".dropdown-trigger").dropdown();
+});
+// localStorage.setItem("search")
+// document.getElementById("search").innerHTML = localStorage.getItem("search-result");
