@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
     <link rel="stylesheet" href="Assets/style.css">
     <title>InTents</title>
 </head>
@@ -16,17 +17,25 @@
     <p id="slogan"><strong>Blaze your trail!</strong></p>
   </header>
   <!-- Search Bar -->
-    <nav>
-        <div class="nav-wrapper">
-          <form>
-            <div class="input-field">
-              <input id="search" type="search" required>
-              <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-              <i class="material-icons">close</i>
-            </div>
-          </form>
-        </div>
-      </nav>
+  <!-- Replace with a dropdown of states -->
+  <ul id="dropdown1" class="dropdown-content">
+    <li><a href="#!">AL</a></li>
+    <li><a href="#!">AK</a></li>
+    <li><a href="#!">AR</a></li>
+    <li><a href="#!">AZ</a></li>
+    <li><a href="#!">CA</a></li>
+    <li><a href="#!">CO</a></li>
+  </ul>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Blaze Your Own Trails!</a>
+      <ul class="right hide-on-med-and-down">
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </div>
+  </nav>
+
       <!-- Display area -->
       <div class="display-area">
         <ul class="search-results">
@@ -45,8 +54,9 @@
           </div>
         </div>
       </footer>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script> -->
     <script src="Assets/script.js"></script>
 </body>
 </html>
