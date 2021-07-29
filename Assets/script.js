@@ -17,5 +17,11 @@ var searchBarEL = $('<li>').appendTo('#search')
 //Campsites will be listed with distance from your location
 
 //Storing search results to Local Storage
+$(document).on('keypress', function(){
+    var cityValue = $('#search').val();
+    var searchListEl = $('<li>').text(cityValue);
 
+    searchListEl.appendTo('.search-results');
+    
+})
 
