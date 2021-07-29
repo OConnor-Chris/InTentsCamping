@@ -12,11 +12,9 @@
 <body>
   <!-- Header with Title and Logo -->
   <header class = "title-bar">
-    <img  src="Assets/Images/logoMap.png" alt="Map icon">
     <h1>InTents Camping</h1>
   </header>
-  <!-- Search Bar -->
-  <!-- Replace with a dropdown of states -->
+  <!-- Replacing the Search bar with a dropdown menu for State selection -->
   <ul id="dropdown1" class="dropdown-content list">
     <li><a href="#!">AL</a></li>
     <li><a href="#!">AK</a></li>
@@ -34,13 +32,24 @@
       </ul>
     </div>
   </nav>
-
       <!-- Display area -->
       <div class="display-area">
         <ul class="search-results">
 
         </ul>
 
+        <div id="map"></div>
+        <script>
+          function initMap(){
+            var options= {
+              zoom:7,
+              center:{lat:44.9778,lng:-93.2650}
+            }
+            
+            var map = new
+            google.maps.Map(document.getElementById('map'), options);
+          }
+        </script>
       </div>
 
       <!-- Footer -->
@@ -53,7 +62,9 @@
           </div>
         </div>
       </footer>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- jquery script must go before materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="Assets/script.js"></script>
     <script async defer
