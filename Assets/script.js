@@ -1,11 +1,21 @@
 var searchBarEL = $('<li>').appendTo('#search')
-var searchResult = document.querySelector('.search-result')
-var campsite = document.querySelector('#campsite')
-var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
+var requestUrl = "https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
+
+function getApi(requestUrl) {
+  fetch(requestUrl)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.data[0].latLong)
+    })
+}
+
+getApi(requestUrl);
 
 //When a user searches for an area
     //Search Bar
-    
+    `
     //Hit search button
     //Calling for the API
         //Calls RIBD recreation API
@@ -17,9 +27,9 @@ var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7Chi
 //They are presented with a list of campsites
     //LI
         //Dynamically create
-
+`
 //Campsites will be listed with distance from your location
- 
+
 //Storing search results to Local Storage
-localStorage.setItem("search")
-document.getElementById("search").innerHTML = localStorage.getItem("search-result");
+
+
