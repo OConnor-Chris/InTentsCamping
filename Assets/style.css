@@ -26,6 +26,11 @@
     background-color: darkgreen;
 }
 
+.nav-wrapper h2 {
+    margin: 0 auto;
+    color: darkorange;
+}
+
 .display-area {
     border: 3px solid yellow;
     width: 100%;

@@ -35,3 +35,5 @@ $( document ).ready(function() {
     $(".dropdown-trigger").dropdown();
 });
 
+//When the state is selected from the drop down menu, run the getAPI function.
+$(document).on('click', )
