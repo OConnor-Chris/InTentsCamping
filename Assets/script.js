@@ -3,6 +3,9 @@ var searchResult = document.querySelector('.search-result')
 var campsite = document.querySelector('#campsite')
 var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?stateCode=mn&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
 
+// Changes the selected state in the NPS API call
+// let userState = userInput.value
+// let requestUrl = "https://developer.nps.gov/api/v1/campgrounds/?stateCode=" + userState + "&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
 
 
 function getApi(requestUrl) {
