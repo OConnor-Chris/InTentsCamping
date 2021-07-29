@@ -3,6 +3,19 @@ var searchResult = document.querySelector('.search-result')
 var campsite = document.querySelector('#campsite')
 var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
 
+
+
+function getApi(requestUrl) {
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data)
+      })
+}
+
+getApi(requestUrl);
 //When a user searches for an area
     //Search Bar
     

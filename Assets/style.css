@@ -38,3 +38,8 @@
     text-align: center;
     background-color: brown;
 }
+
+#map {
+    height: 400px;
+    width: 100%
+}
