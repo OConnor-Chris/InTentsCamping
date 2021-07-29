@@ -1,7 +1,11 @@
 var searchBarEL = $('<li>').appendTo('#search')
+
+function getApi() {
+
+}
 //When a user searches for an area
     //Search Bar
-    
+    `
     //Hit search button
     //Calling for the API
         //Calls RIBD recreation API
@@ -13,7 +17,7 @@ var searchBarEL = $('<li>').appendTo('#search')
 //They are presented with a list of campsites
     //LI
         //Dynamically create
-
+`
 //Campsites will be listed with distance from your location
 
 //Storing search results to Local Storage
