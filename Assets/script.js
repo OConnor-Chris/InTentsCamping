@@ -1,7 +1,7 @@
 var searchBarEL = $('<li>').appendTo('#search')
 var searchResult = document.querySelector('.search-result')
 var campsite = document.querySelector('#campsite')
-var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
+var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?stateCode=mn&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
 
 
 
