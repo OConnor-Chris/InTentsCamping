@@ -7,7 +7,7 @@ var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?stateCode=mn&api
 // let userState = userInput.value
 // let requestUrl = "https://developer.nps.gov/api/v1/campgrounds/?stateCode=" + userState + "&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
 
-
+// requestUrl at the moment has Minnesota by default
 function getApi(requestUrl) {
     fetch(requestUrl)
       .then(function (response) {
