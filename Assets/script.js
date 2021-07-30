@@ -14,7 +14,7 @@ function getApi(requestUrl) {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
+        console.log(data.data[0].addresses[0].stateCode)
       })
 }
 
