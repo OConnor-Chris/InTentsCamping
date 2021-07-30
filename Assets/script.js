@@ -11,9 +11,9 @@ function getApi(userState) {
             return response.json();
         })
         .then(function (data) {
-            var stateName = $('<li>').addClass('user-select').text(`${data}`)
-                // console.log(data);
-            $('.search-list').append(stateName);
+            var cityName = $('<li>').addClass('user-select').text(`${data.data[0].addresses[0].city}, ${data.data[0].addresses[0].line1}`)
+            console.log(data);
+            $('.search-results').append(cityName);
         })
 }
 //When user selects the campsite
