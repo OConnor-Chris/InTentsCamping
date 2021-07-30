@@ -1,9 +1,9 @@
 var searchBarEL = $('<li>').appendTo('#search');
 var searchResult = document.querySelector('.search-result');
 var campsite = document.querySelector('#campsite');
-var userState = $('#search').val();
+// var userState = $('#state-select').val();
 
-function getApi(stateValue) {
+function getApi(userState) {
     var requestUrl = "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userState + "&limit=10&api_key=kdwUFElfnyssbQAQVTTsu4o686nGIvszl3ymx0IW"
         console.log(userState);
     fetch(requestUrl)
@@ -30,9 +30,9 @@ function getApi(stateValue) {
     //Dynamically generate a list of campsites in that state
 
 $(document).on('click', '.list', function(event){
-    var stateSearch = $(event.target).text().trim();
-    $('#search').val(stateSearch);
-    getApi(stateSearch);
+    var userState = $(event.target).text().trim();
+    $('#state-select').val(userState);
+    getApi(userState);
     
 })
 
