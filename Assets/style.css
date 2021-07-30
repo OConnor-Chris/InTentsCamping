@@ -31,6 +31,10 @@
     color: darkorange;
 }
 
+#state-select {
+    font-size: x-large;
+}
+
 .display-area {
     border: 3px solid yellow;
     width: 100%;
@@ -42,4 +46,10 @@
     border: 3px solid black;
     text-align: center;
     background-color: brown;
+}
+
+@media screen and (max-width: 962px){
+    .nav-wrapper {
+        display: flex;
+    }
 }
