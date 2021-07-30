@@ -1,17 +1,18 @@
-var searchBarEL = $('<li>').appendTo('#search')
-var searchResult = document.querySelector('.search-result')
-var campsite = document.querySelector('#campsite')
-var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
+var searchBarEL = $('<li>').appendTo('#search');
+var searchResult = document.querySelector('.search-result');
+var campsite = document.querySelector('#campsite');
+var userState = $('#search').val();
 
 function getApi(stateValue) {
-    var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?q=${stateValue}&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
+    var requestUrl = "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userState + "&limit=10&api_key=kdwUFElfnyssbQAQVTTsu4o686nGIvszl3ymx0IW"
+        console.log(userState);
     fetch(requestUrl)
         .then(function(response){
             return response.json();
         })
         .then(function (data) {
-            var stateName = $('<li>').text(`${data.addresses[1].statecode}`)
-                console.log(data);
+            var stateName = $('<li>').addClass('user-select').text(`${data}`)
+                // console.log(data);
             $('.search-list').append(stateName);
         })
 }
@@ -30,6 +31,7 @@ function getApi(stateValue) {
 
 $(document).on('click', '.list', function(event){
     var stateSearch = $(event.target).text().trim();
+    $('#search').val(stateSearch);
     getApi(stateSearch);
     
 })
