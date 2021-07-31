@@ -18,6 +18,15 @@ function getApi(requestUrl) {
       })
 }
 
+function getApi(requestUrl) {
+    fetch(requestUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data.data[0].addresses[0].stateCode)
+      })
+}
 getApi(requestUrl);
 //When a user searches for an area
     //Search Bar
