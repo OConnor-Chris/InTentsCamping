@@ -26,6 +26,15 @@
     background-color: darkgreen;
 }
 
+.nav-wrapper h2 {
+    margin: 0 auto;
+    color: darkorange;
+}
+
+#state-select {
+    font-size: x-large;
+}
+
 .display-area {
     border: 3px solid yellow;
     width: 100%;
@@ -39,7 +48,8 @@
     background-color: brown;
 }
 
+
+
 #map {
     height: 400px;
     width: 100%
-}

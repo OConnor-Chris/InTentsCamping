@@ -1,46 +1,56 @@
-var searchBarEL = $('<li>').appendTo('#search')
-var searchResult = document.querySelector('.search-result')
-var campsite = document.querySelector('#campsite')
-var requestUrl = 'https://developer.nps.gov/api/v1/campgrounds/?stateCode=mn&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf'
 
-// Changes the selected state in the NPS API call
-// let userState = userInput.value
-// let requestUrl = "https://developer.nps.gov/api/v1/campgrounds/?stateCode=" + userState + "&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
+var searchResult = document.querySelector('.search-result');
+var campsite = document.querySelector('#campsite');
+// var userState = $('#state-select').val();
 
-// requestUrl at the moment has Minnesota by default
-function getApi(requestUrl) {
+function getApi(userState) {
+    var requestUrl = "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userState + "&limit=10&api_key=kdwUFElfnyssbQAQVTTsu4o686nGIvszl3ymx0IW"
+        console.log(userState);
     fetch(requestUrl)
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        console.log(data.data[0].addresses[0].stateCode)
-      })
+        .then(function(response){
+            return response.json();
+        })
+        .then(function (npsResponseArray) {
+           renderResults(npsResponseArray);
+        })
 }
 
-getApi(requestUrl);
-//When a user searches for an area
-    //Search Bar
+function renderResults(npsApiResponse) {
+    console.log("npsApiResponse call here");
+    console.log(npsApiResponse);
+    var respData = npsApiResponse.data;
+    for (let i = 0; i < respData.length; i++) {
+        // ? a condition that checks if the property exists
+        var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`)
+        
+
+        console.log(resultEl);
+        $('.search-results').append(resultEl);
+        
+    }
+}
+//When user selects the campsite
+    //Generate a route to the campsite
+        //Pop-out? Second page?
+
     
-    //Hit search button
-    //Calling for the API
-        //Calls RIBD recreation API
-            //List of Campsites
-        //Calls Google Maps API
-            //Distance to the campsites
-    //Geneorates list of campsites
-    
-//They are presented with a list of campsites
-    //LI
-        //Dynamically create
+
 
 //Campsites will be listed with distance from your location
- 
-//Storing search results to Local Storage
+
+ //When a user selects a State from the dropdown list
+    //Dynamically generate a list of campsites in that state
+
+$(document).on('click', '.list', function(event){
+    var userState = $(event.target).text().trim();
+    $('#state-select').val(userState);
+    getApi(userState);
+    
+})
 
 //This is jq for the dropdown menu
 $( document ).ready(function() {
     $(".dropdown-trigger").dropdown();
 });
-// localStorage.setItem("search")
-// document.getElementById("search").innerHTML = localStorage.getItem("search-result");
+//Storing search results to Local Storage
+

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +12,6 @@
   <!-- Header with Title and Logo -->
   <header class = "title-bar">
     <h1>InTents Camping</h1>
-    <p id="slogan"><strong>Blaze your trail!</strong></p>
   </header>
   <!-- Replacing the Search bar with a dropdown menu for State selection -->
   <ul id="dropdown1" class="dropdown-content list">
@@ -22,14 +21,59 @@
     <li><a href="#!">AZ</a></li>
     <li><a href="#!">CA</a></li>
     <li><a href="#!">CO</a></li>
+    <li><a href="#!">CT</a></li>
+    <li><a href="#!">DE</a></li>
+    <li><a href="#!">DC</a></li>
+    <li><a href="#!">FL</a></li>
+    <li><a href="#!">GA</a></li>
+    <li><a href="#!">HI</a></li>
+    <li><a href="#!">IA</a></li>
+    <li><a href="#!">ID</a></li>
+    <li><a href="#!">IL</a></li>
+    <li><a href="#!">IN</a></li>
+    <li><a href="#!">KS</a></li>
+    <li><a href="#!">KY</a></li>
+    <li><a href="#!">LA</a></li>
+    <li><a href="#!">MA</a></li>
+    <li><a href="#!">MD</a></li>
+    <li><a href="#!">ME</a></li>
+    <li><a href="#!">MI</a></li>
+    <li><a href="#!">MN</a></li>
+    <li><a href="#!">MO</a></li>
+    <li><a href="#!">MS</a></li>
+    <li><a href="#!">MT</a></li>
+    <li><a href="#!">NC</a></li>
+    <li><a href="#!">ND</a></li>
+    <li><a href="#!">NE</a></li>
+    <li><a href="#!">NH</a></li>
+    <li><a href="#!">NJ</a></li>
+    <li><a href="#!">NM</a></li>
+    <li><a href="#!">NV</a></li>
+    <li><a href="#!">NY</a></li>
+    <li><a href="#!">OH</a></li>
+    <li><a href="#!">OK</a></li>
+    <li><a href="#!">OR</a></li>
+    <li><a href="#!">PA</a></li>
+    <li><a href="#!">RI</a></li>
+    <li><a href="#!">SC</a></li>
+    <li><a href="#!">SD</a></li>
+    <li><a href="#!">TN</a></li>
+    <li><a href="#!">TX</a></li>
+    <li><a href="#!">UT</a></li>
+    <li><a href="#!">VA</a></li>
+    <li><a href="#!">VT</a></li>
+    <li><a href="#!">WA</a></li>
+    <li><a href="#!">WI</a></li>
+    <li><a href="#!">WV</a></li>
+    <li><a href="#!">WY</a></li>
   </ul>
   <nav>
     <div class="nav-wrapper">
-      <h2 class="brand-logo">Blaze Your Own Trails!</h2>
-      <ul class="right hide-on-med-and-down">
+      <ul class="left">
         <!-- Dropdown Trigger -->
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">State<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a class="dropdown-trigger" id="state-select" href="#!" data-target="dropdown1">Select State</a></li>
       </ul>
+      <!-- <input type='text' id="search"/> -->
     </div>
   </nav>
       <!-- Display area -->
@@ -62,10 +106,10 @@
           </div>
         </div>
       </footer>
+
 <!-- jquery script must go before materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
->>>>>>> Stashed changes
     <script src="Assets/script.js"></script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB35edU2bJy9KUuFdilRjifzM5sCJbSBSY&callback=initMap&libraries=places&v=weekly"
