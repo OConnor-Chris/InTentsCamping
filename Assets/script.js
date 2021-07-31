@@ -1,4 +1,3 @@
-var searchBarEL = $('<li>').appendTo('#search');
 var searchResult = document.querySelector('.search-result');
 var campsite = document.querySelector('#campsite');
 // var userState = $('#state-select').val();
