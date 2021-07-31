@@ -14,6 +14,8 @@ function getApi(requestUrl) {
 getApi(requestUrl);
 
 //When a user searches for an area
+    //They are presented with a dropdown menu
+        
     //Dropdown
     
     //Hit search button
@@ -26,7 +28,8 @@ getApi(requestUrl);
 
         //Calls Google Maps API
 
-            //Distance to the campsites
+            //Distance to the campsites from users location
+
     //Geneorates list of campsites
     
 //They are presented with a list of campsites
