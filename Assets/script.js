@@ -39,5 +39,24 @@ getApi(requestUrl);
 //Campsites will be listed with distance from your location
 
 //Storing search results to Local Storage
+function LocalStorage() {
+    var state = localStorage.getItem('state');
+    
 
+    if(!state){
+        return;
+    }
+    stateSelectSpan.textContent = state;
+    
+
+}
+
+dropdown.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    var state = document.querySelector("#state").value;
+
+    localStorage.setItem("state", state);
+
+})
 
