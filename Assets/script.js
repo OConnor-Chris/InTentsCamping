@@ -41,8 +41,15 @@ function renderResults(npsApiResponse) {
 
 $(document).on('click', '.list', function(event){
     var userState = $(event.target).text().trim();
+    var stateEl = $('<p>').text(userState);
+
+    stateEl.appendTo('.user-choice');
     $('#state-select').val(userState);
+
     getApi(userState);
+
+    localStorage.getItem(userState);
+    localStorage.setItem(stateEl, userState)
     
 })
 

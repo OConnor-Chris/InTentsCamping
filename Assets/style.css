@@ -48,8 +48,6 @@
     background-color: brown;
 }
 
-@media screen and (max-width: 962px){
-    .nav-wrapper {
-        display: flex;
-    }
+.user-choice {
+    display: none;
 }
