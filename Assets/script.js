@@ -52,5 +52,4 @@ $( document ).ready(function() {
     $(".dropdown-trigger").dropdown();
 });
 //Storing search results to Local Storage
-// localStorage.setItem("search")
-// document.getElementById("search").innerHTML = localStorage.getItem("search-result");
+
