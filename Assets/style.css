@@ -48,8 +48,8 @@
     background-color: brown;
 }
 
-@media screen and (max-width: 962px){
-    .nav-wrapper {
-        display: flex;
-    }
-}
+
+
+#map {
+    height: 400px;
+    width: 100%

@@ -1,3 +1,4 @@
+
 var searchResult = document.querySelector('.search-result');
 var campsite = document.querySelector('#campsite');
 // var userState = $('#state-select').val();
@@ -31,6 +32,7 @@ function renderResults(npsApiResponse) {
 //When user selects the campsite
     //Generate a route to the campsite
         //Pop-out? Second page?
+
     
 
 
