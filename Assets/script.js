@@ -1,6 +1,7 @@
 var searchBarEL = $('<li>').appendTo('#search')
 var requestUrl = "https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
-
+var dropdown = document.querySelector('#dropdown1');
+var stateSelectSpan = document.querySelector('#state-select')
 function getApi(requestUrl) {
   fetch(requestUrl)
     .then(function (response) {
