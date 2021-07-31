@@ -10,19 +10,30 @@ function getApi(userState) {
         .then(function(response){
             return response.json();
         })
-        .then(function (data) {
-            var cityName = $('<li>').addClass('user-select').text(`${data.data[0].addresses[0].city}, ${data.data[0].addresses[0].line1}`)
-            console.log(data);
-            $('.search-results').append(cityName);
+        .then(function (npsResponseArray) {
+           renderResults(npsResponseArray);
         })
+}
+
+function renderResults(npsApiResponse) {
+    console.log("npsApiResponse call here");
+    console.log(npsApiResponse);
+    var respData = npsApiResponse.data;
+    for (let i = 0; i < respData.length; i++) {
+        // ? a condition that checks if the property exists
+        var resultEl = $('<li>').addClass('user-select').text(`${respData[i].addresses[0]?.city}, ${respData[i].addresses[0]?.line1}`)
+        
+
+        console.log(resultEl);
+        $('.search-results').append(resultEl);
+        
+    }
 }
 //When user selects the campsite
     //Generate a route to the campsite
         //Pop-out? Second page?
     
-//They are presented with a list of campsites
-    //LI
-        //Dynamically create
+
 
 //Campsites will be listed with distance from your location
 
