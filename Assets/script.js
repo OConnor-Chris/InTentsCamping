@@ -21,7 +21,7 @@ function renderResults(npsApiResponse) {
     var respData = npsApiResponse.data;
     for (let i = 0; i < respData.length; i++) {
         // ? a condition that checks if the property exists
-        var resultEl = $('<li>').addClass('user-select').text(`${respData[i].addresses[0]?.city}, ${respData[i].addresses[0]?.line1}`)
+        var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`)
         
 
         console.log(resultEl);
