@@ -41,12 +41,7 @@ function renderResults(npsApiResponse) {
  //When a user selects a State from the dropdown list
     //Dynamically generate a list of campsites in that state
 
-$(document).on('click', '.list', function(event){
-    var userState = $(event.target).text().trim();
-    $('#state-select').val(userState);
-    getApi(userState);
-    
-})
+
 
 //This is jq for the dropdown menu
 $( document ).ready(function() {
@@ -55,49 +50,69 @@ $( document ).ready(function() {
 //Storing search results to Local Storage
 
 //Google map displaying users current location
-let map, infoWindow;
+let map;
+let service;
+let infowindow;
 
 function initMap() {
+  const sydney = new google.maps.LatLng(-33.867, 151.195);
+  infowindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: 44.88492, lng: -93.22220 },
-    zoom: 12,
+    center: sydney,
+    zoom: 8,
   });
-  infoWindow = new google.maps.InfoWindow();
-  const locationButton = document.createElement("button");
-  locationButton.textContent = "Pan to Current Location";
-  locationButton.classList.add("custom-map-control-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-  locationButton.addEventListener("click", () => {
-    // Try HTML5 geolocation.
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const pos = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude,
-          };
-          infoWindow.setPosition(pos);
-          infoWindow.setContent("Location found.");
-          infoWindow.open(map);
-          map.setCenter(pos);
-        },
-        () => {
-          handleLocationError(true, infoWindow, map.getCenter());
-        }
-      );
-    } else {
-      // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+  const request = {
+    query: `rome`,
+    fields: ["name", "geometry"],
+  };
+  service = new google.maps.places.PlacesService(map);
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+      map.setCenter(results[0].geometry.location);
     }
   });
 }
 
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-  infoWindow.open(map);
+function createMarker(place) {
+  if (!place.geometry || !place.geometry.location) return;
+  const marker = new google.maps.Marker({
+    map,
+    position: place.geometry.location,
+  });
+  google.maps.event.addListener(marker, "click", () => {
+    infowindow.setContent(place.name || "");
+    infowindow.open(map);
+  });
 }
+
+function LocalStorage() {
+  var state = localStorage.getItem('state');
+  
+
+  if(!state){
+      return;
+  }
+  stateSelectSpan.textContent = state;
+  
+
+}
+
+dropdown.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var state = document.querySelector("#state").value;
+
+  localStorage.setItem("state", state);
+
+})
+
+$(document).on('click', '.list', function(event){
+  var userState = $(event.target).text().trim();
+  $('#state-select').val(userState);
+  getApi(userState);
+
+  initMap()
+})
