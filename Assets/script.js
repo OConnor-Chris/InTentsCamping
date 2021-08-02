@@ -76,6 +76,7 @@ function initMap() {
   });
 }
 
+<<<<<<< Updated upstream
 function createMarker(place) {
   if (!place.geometry || !place.geometry.location) return;
   const marker = new google.maps.Marker({
@@ -109,10 +110,27 @@ dropdown.addEventListener("click", function(event) {
 
 })
 
+=======
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  infoWindow.open(map);
+}
+
+>>>>>>> Stashed changes
 $(document).on('click', '.list', function(event){
   var userState = $(event.target).text().trim();
   $('#state-select').val(userState);
   getApi(userState);
+<<<<<<< Updated upstream
 
   initMap()
 })
+=======
+  
+})
+>>>>>>> Stashed changes
