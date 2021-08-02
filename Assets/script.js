@@ -37,15 +37,15 @@ let map;
 let service;
 let infowindow;
 
-function initMap() {
-  const sydney = new google.maps.LatLng(-33.867, 151.195);
+function initMap(x) {
+  const minnesota = new google.maps.LatLng(45.84296, -94.37325);
   infowindow = new google.maps.InfoWindow();
   map = new google.maps.Map(document.getElementById("map"), {
-    center: sydney,
-    zoom: 8,
+    center: minnesota,
+    zoom: 6,
   });
   const request = {
-    query: `rome`,
+    query: x,
     fields: ["name", "geometry"],
   };
   service = new google.maps.places.PlacesService(map);
@@ -81,7 +81,7 @@ $(document).on('click', '.list', function(event){
     var userState = $(event.target).text().trim();
     $('#state-select').val(userState);
     getApi(userState);
-    
+    initMap(userState);
 })
 
 //This is jq for the dropdown menu
