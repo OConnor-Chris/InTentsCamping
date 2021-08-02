@@ -1,11 +1,11 @@
 
 var searchResult = document.querySelector('.search-result');
 var campsite = document.querySelector('#campsite');
-// var userState = $('#state-select').val();
+var userState = $('#state-select').val();
 
 function getApi(userState) {
     var requestUrl = "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userState + "&limit=10&api_key=kdwUFElfnyssbQAQVTTsu4o686nGIvszl3ymx0IW"
-        console.log(userState);
+        
     fetch(requestUrl)
         .then(function(response){
             return response.json();
@@ -21,8 +21,7 @@ function renderResults(npsApiResponse) {
     var respData = npsApiResponse.data;
     for (let i = 0; i < respData.length; i++) {
         // ? a condition that checks if the property exists
-        var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`)
-        
+        var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`);
 
         console.log(resultEl);
         $('.search-results').append(resultEl);
@@ -33,7 +32,44 @@ function renderResults(npsApiResponse) {
     //Generate a route to the campsite
         //Pop-out? Second page?
 
+let map;
+let service;
+let infowindow;
+// var queryInfo =
+
+function initMap() {
+     const sydney = new google.maps.LatLng(-33.867, 151.195);
+    infowindow = new google.maps.InfoWindow();
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: sydney,
+        zoom: 15,
+});
+    const request = {
+        query: '',
+        fields: ["name", "geometery"],
+};
+    console.log(userState);
+    request.query = $('<p>').text(userState);
     
+    console.log(request)
+    service = new google.maps.places.PlacesService(map);
+    service.findPlaceFromQuery(request, (results, status) => {
+        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+            for (let i = 0; i < results.length; i++) {
+                createMarker(results[i]);
+            }
+            map.setCenter(results[0].geometry.location);
+        }
+          });
+        }
+
+        function createMarker(place) {
+          if (!place.geometry || !place.geometry.location) return;
+          const marker = new google.maps.Marker({
+            map,
+            position: place.geometry.location,
+          });
+        }
 
 
 //Campsites will be listed with distance from your location
@@ -44,11 +80,13 @@ function renderResults(npsApiResponse) {
 $(document).on('click', '.list', function(event){
     var userState = $(event.target).text().trim();
     var stateEl = $('<p>').text(userState);
-
+    // var stateQuery = 
+    
     stateEl.appendTo('.user-choice');
     $('#state-select').val(userState);
 
     getApi(userState);
+    initMap(userState);
 
     localStorage.getItem(userState);
     localStorage.setItem(stateEl, userState)
@@ -60,4 +98,3 @@ $( document ).ready(function() {
     $(".dropdown-trigger").dropdown();
 });
 //Storing search results to Local Storage
-
