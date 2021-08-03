@@ -35,41 +35,41 @@ function renderResults(npsApiResponse) {
 let map;
 let service;
 let infowindow;
-// var queryInfo =
 
-function initMap() {
-     const sydney = new google.maps.LatLng(-33.867, 151.195);
-    infowindow = new google.maps.InfoWindow();
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: sydney,
-        zoom: 15,
-});
-    const request = {
-        query: '',
-        fields: ["name", "geometery"],
-};
-    console.log(userState);
-    request.query = $('<p>').text(userState);
-    
-    console.log(request)
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, (results, status) => {
-        if (status === google.maps.places.PlacesServiceStatus.OK && results) {
-            for (let i = 0; i < results.length; i++) {
-                createMarker(results[i]);
-            }
-            map.setCenter(results[0].geometry.location);
-        }
-          });
-        }
+function initMap(x) {
+  const minnesota = new google.maps.LatLng(45.84296, -94.37325);
+  infowindow = new google.maps.InfoWindow();
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: minnesota,
+    zoom: 6,
+  });
+  const request = {
+    query: x,
+    fields: ["name", "geometry"],
+  };
+  service = new google.maps.places.PlacesService(map);
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+      map.setCenter(results[0].geometry.location);
+    }
+  });
+}
 
-        function createMarker(place) {
-          if (!place.geometry || !place.geometry.location) return;
-          const marker = new google.maps.Marker({
-            map,
-            position: place.geometry.location,
-          });
-        }
+function createMarker(place) {
+  if (!place.geometry || !place.geometry.location) return;
+  const marker = new google.maps.Marker({
+    map,
+    position: place.geometry.location,
+  });
+  google.maps.event.addListener(marker, "click", () => {
+    infowindow.setContent(place.name || "");
+    infowindow.open(map);
+  });
+} 
+
 
 
 //Campsites will be listed with distance from your location
@@ -88,9 +88,11 @@ $(document).on('click', '.list', function(event){
     getApi(userState);
     initMap(userState);
 
+
     localStorage.getItem(userState);
     localStorage.setItem(stateEl, userState)
     
+
 })
 
 //This is jq for the dropdown menu
