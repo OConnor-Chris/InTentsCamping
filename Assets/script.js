@@ -16,14 +16,12 @@ function getApi(userState) {
 }
 
 function renderResults(npsApiResponse) {
-    console.log("npsApiResponse call here");
-    console.log(npsApiResponse);
+    // console.log(npsApiResponse);
     var respData = npsApiResponse.data;
     for (let i = 0; i < respData.length; i++) {
         // ? a condition that checks if the property exists
         var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`);
-
-        console.log(resultEl);
+        
         $('.search-results').append(resultEl);
         
     }
@@ -35,22 +33,19 @@ function renderResults(npsApiResponse) {
 let map;
 let service;
 let infowindow;
-// var queryInfo =
 
-function initMap() {
-     const sydney = new google.maps.LatLng(-33.867, 151.195);
+function initMap(x) {
+    const sydney = new google.maps.LatLng(-33.867, 151.195);
     infowindow = new google.maps.InfoWindow();
     map = new google.maps.Map(document.getElementById("map"), {
         center: sydney,
         zoom: 15,
 });
     const request = {
-        query: '',
+        query: x,
         fields: ["name", "geometery"],
 };
-    console.log(userState);
-    request.query = $('<p>').text(userState);
-    
+
     console.log(request)
     service = new google.maps.places.PlacesService(map);
     service.findPlaceFromQuery(request, (results, status) => {
