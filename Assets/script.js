@@ -70,6 +70,27 @@ function createMarker(place) {
   });
 } 
 
+function LocalStorage() {
+  var state = localStorage.getItem('state');
+  
+
+  if(!state){
+      return;
+  }
+  stateSelectSpan.textContent = state;
+  
+
+}
+
+dropdown.addEventListener("click", function(event) {
+  event.preventDefault();
+
+  var state = document.querySelector("#state").value;
+
+  localStorage.setItem("state", state);
+
+})
+
 
 
 //Campsites will be listed with distance from your location
