@@ -82,14 +82,14 @@ function LocalStorage() {
 
 }
 
-dropdown.addEventListener("click", function(event) {
-  event.preventDefault();
+// dropdown.addEventListener("click", function(event) {
+//   event.preventDefault();
 
-  var state = document.querySelector("#state").value;
+//   var state = document.querySelector("#state").value;
 
-  localStorage.setItem("state", state);
+//   localStorage.setItem("state", state);
 
-})
+// })
 
 
 
