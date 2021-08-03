@@ -1,7 +1,7 @@
 
 var searchResult = document.querySelector('.search-result');
 var campsite = document.querySelector('#campsite');
-var userState = $('#state-select').val();
+//var userState = $('#state-select').val();
 
 function getApi(userState) {
     var requestUrl = "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userState + "&limit=10&api_key=kdwUFElfnyssbQAQVTTsu4o686nGIvszl3ymx0IW"
@@ -48,12 +48,16 @@ function initMap(x) {
     fields: ["name", "geometry"],
   };
   service = new google.maps.places.PlacesService(map);
+  if (!x){
+    return;
+  }
   service.findPlaceFromQuery(request, (results, status) => {
     if (status === google.maps.places.PlacesServiceStatus.OK && results) {
       for (let i = 0; i < results.length; i++) {
         createMarker(results[i]);
       }
       map.setCenter(results[0].geometry.location);
+
     }
   });
 }
