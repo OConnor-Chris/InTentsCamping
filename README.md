@@ -8,7 +8,7 @@ Back end/Local Storage - Josh Rist
 
 As a camper
 I want to find a list of campsites in a state of my chosing
-So that I can plan a route to the campsite of my choice
+So that I can rout my trip through my chosen state.
 
 ### Project Description
 From the Select State, choose the state you wish to explore
