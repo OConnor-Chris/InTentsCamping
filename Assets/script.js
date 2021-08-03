@@ -78,7 +78,7 @@ function createMarker(place) {
 $(document).on('click', '.list', function(event){
     var userState = $(event.target).text().trim();
     var stateEl = $('<p>').text(userState);
-    // var stateQuery = 
+    
     
     stateEl.appendTo('.user-choice');
     $('#state-select').val(userState);
@@ -86,9 +86,8 @@ $(document).on('click', '.list', function(event){
     getApi(userState);
     initMap(userState);
 
-
-    localStorage.getItem(userState);
-    localStorage.setItem(stateEl, userState)
+   
+    localStorage.setItem("#state-select", JSON.stringify(userState));
     
 
 })
