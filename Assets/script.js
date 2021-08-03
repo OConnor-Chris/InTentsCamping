@@ -1,66 +1,116 @@
-var searchBarEL = $('<li>').appendTo('#search')
-var requestUrl = "https://developer.nps.gov/api/v1/campgrounds/?&api_key=xSn7ChieXuRmYI13uvMt5MVAakcIvQOihc2TvJMf"
-var dropdown = document.querySelector('#dropdown1');
-var stateSelectSpan = document.querySelector('#state-select')
+
+var searchResult = document.querySelector('.search-result');
+var campsite = document.querySelector('#campsite');
 LocalStorage();
+// var userState = $('#state-select').val();
 
-
-function getApi(requestUrl) {
-  fetch(requestUrl)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data.data[0].latLong)
-    })
+function getApi(userState) {
+    var requestUrl = "https://developer.nps.gov/api/v1/campgrounds?stateCode=" + userState + "&limit=10&api_key=kdwUFElfnyssbQAQVTTsu4o686nGIvszl3ymx0IW"
+        console.log(userState);
+    fetch(requestUrl)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function (npsResponseArray) {
+           renderResults(npsResponseArray);
+        })
 }
 
-getApi(requestUrl);
-
-//When a user searches for an area
-    //They are presented with a dropdown menu
+function renderResults(npsApiResponse) {
+    console.log("npsApiResponse call here");
+    console.log(npsApiResponse);
+    var respData = npsApiResponse.data;
+    for (let i = 0; i < respData.length; i++) {
+        // ? a condition that checks if the property exists
+        var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`)
         
-    //Dropdown
-    
-    //Hit search button
 
-    //Calling for the API
+        console.log(resultEl);
+        $('.search-results').append(resultEl);
+        
+    }
+}
+//When user selects the campsite
+    //Generate a route to the campsite
+        //Pop-out? Second page?
 
-        //Calls RIBD recreation API
+let map;
+let service;
+let infowindow;
 
-            //List of Campsites
+function initMap(x) {
+  const minnesota = new google.maps.LatLng(45.84296, -94.37325);
+  infowindow = new google.maps.InfoWindow();
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: minnesota,
+    zoom: 6,
+  });
+  const request = {
+    query: x,
+    fields: ["name", "geometry"],
+  };
+  service = new google.maps.places.PlacesService(map);
+  service.findPlaceFromQuery(request, (results, status) => {
+    if (status === google.maps.places.PlacesServiceStatus.OK && results) {
+      for (let i = 0; i < results.length; i++) {
+        createMarker(results[i]);
+      }
+      map.setCenter(results[0].geometry.location);
+    }
+  });
+}
 
-        //Calls Google Maps API
+function createMarker(place) {
+  if (!place.geometry || !place.geometry.location) return;
+  const marker = new google.maps.Marker({
+    map,
+    position: place.geometry.location,
+  });
+  google.maps.event.addListener(marker, "click", () => {
+    infowindow.setContent(place.name || "");
+    infowindow.open(map);
+  });
+} 
 
-            //Distance to the campsites from users location
 
-    //Geneorates list of campsites
-    
-//They are presented with a list of campsites
-    //LI
-        //Dynamically create
+//Campsites will be listed with distance from your location in possible future iterations
 
-//Campsites will be listed with distance from your location
+ //When a user selects a State from the dropdown list
+    //Dynamically generate a list of campsites in that state
+    //Update Google map to focus on state selected
+
+$(document).on('click', '.list', function(event){
+    var userState = $(event.target).text().trim();
+    $('#state-select').val(userState);
+    getApi(userState);
+    initMap(userState);
+})
+
+//This is jq for the dropdown menu
+$( document ).ready(function() {
+    $(".dropdown-trigger").dropdown();
+});
 
 //Storing search results to Local Storage
+//Storing search results to Local Storage
 function LocalStorage() {
-    var state = localStorage.getItem('state');
-    
+  var state = localStorage.getItem('state');
+  
 
-    if(!state){
-        return;
-    }
-    stateSelectSpan.textContent = state;
-    
+  if(!state){
+      return;
+  }
+  stateSelectSpan.textContent = state;
+  
 
 }
 
 dropdown.addEventListener("click", function(event) {
-    event.preventDefault();
+  event.preventDefault();
 
-    var state = document.querySelector("#state").value;
+  var state = document.querySelector("#state").value;
 
-    localStorage.setItem("state", state);
+  localStorage.setItem("state", state);
 
 })
 
