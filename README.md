@@ -34,5 +34,7 @@ Other challenges included getting the localStorage function to hold the informat
 ##### Links and Images
 https://github.com/OConnor-Chris/InTentsCamping
 
+https://oconnor-chris.github.io/InTentsCamping/
 
+![InTents Demo](./Assets/Images/InTents.png)
 
