@@ -16,14 +16,12 @@ function getApi(userState) {
 }
 
 function renderResults(npsApiResponse) {
-    console.log("npsApiResponse call here");
-    console.log(npsApiResponse);
+    // console.log(npsApiResponse);
     var respData = npsApiResponse.data;
     for (let i = 0; i < respData.length; i++) {
         // ? a condition that checks if the property exists
         var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`);
-
-        console.log(resultEl);
+        
         $('.search-results').append(resultEl);
         
     }
@@ -105,7 +103,7 @@ function LocalStorage() {
 $(document).on('click', '.list', function(event){
     var userState = $(event.target).text().trim();
     var stateEl = $('<p>').text(userState);
-    // var stateQuery = 
+    
     
     stateEl.appendTo('.user-choice');
     $('#state-select').val(userState);
@@ -113,9 +111,8 @@ $(document).on('click', '.list', function(event){
     getApi(userState);
     initMap(userState);
 
-
-    localStorage.getItem(userState);
-    localStorage.setItem(stateEl, userState)
+   
+    localStorage.setItem("#state-select", JSON.stringify(userState));
     
 
 })
