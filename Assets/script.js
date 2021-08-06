@@ -20,8 +20,9 @@ function renderResults(npsApiResponse) {
     var respData = npsApiResponse.data;
     for (let i = 0; i < respData.length; i++) {
         // ? a condition that checks if the property exists
-        var resultEl = $('<li>').addClass('user-select').text(`${respData[i]?.name} ${respData[i].url}`);
-        
+        var resultEl = $('<li>').addClass('user-select');
+        var anchorEl = $('<a>').text(`${respData[i]?.name}`).attr("href", `${respData[i].url}`);
+        resultEl.append(anchorEl);
         $('.search-results').append(resultEl);
         
     }
