@@ -37,4 +37,5 @@ https://github.com/OConnor-Chris/InTentsCamping
 https://oconnor-chris.github.io/InTentsCamping/
 
 ![InTents Demo](./Assets/Images/InTents.png)
+![InTents Marker Demo](./Assets/Images/InTentsMap.png)
 
